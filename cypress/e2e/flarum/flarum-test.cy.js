@@ -42,9 +42,11 @@ describe('test flarum web site', () => {
             req.continue((req) => {
                 req.body.data.attributes.bio = test_data.stubbed_text
             })
-        })
+        }).as('stubPostRequest')
 
         cy.typeTextInTextArea(test_data.new_phrase)
+
+        cy.wait('@stubPostRequest')
 
         cy.get('.item-bio')
             .should('have.text', test_data.stubbed_text)
