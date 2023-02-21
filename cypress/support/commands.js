@@ -53,6 +53,10 @@ Cypress.Commands.add('checkIfBioAssert', (valueToMatch) => {
     cy.assertTextOfElement(ITEM_BIO, valueToMatch);
 });
 
+Cypress.Commands.add('logInfo', (message) => {
+    cy.task('log', message);
+});
+
 
 
 
