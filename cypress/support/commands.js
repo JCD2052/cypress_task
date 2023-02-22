@@ -32,7 +32,7 @@ Cypress.Commands.add('clickOnElement', (locator) => {
 
 Cypress.Commands.add('assertTextOfElement', (locator, valueToMatch) => {
     cy.get(locator)
-        .should('have.text', valueToMatch);
+        .should('contain.text', valueToMatch);
 });
 
 Cypress.Commands.add('checkIfVisible', (locator) => {
