@@ -1,5 +1,5 @@
 const {randomString} = require("../../fixtures/get-random-string");
-const {STATUS, USER_CARD, ITEM_BIO, HEADER_LOGO, ITEM_LOGIN} = require("../../support/locators");
+const {STATUS, USER_CARD, ITEM_BIO, HEADER_LOGO, ITEM_LOGIN, USERNAME_VALUE} = require("../../support/locators");
 describe('test flarum web site', () => {
     let testData;
     before(() => {
@@ -15,6 +15,7 @@ describe('test flarum web site', () => {
         cy.clickOnElement(ITEM_LOGIN);
         cy.log('Step 2: Login page is open');
         cy.logInViaUI(testData.email, testData.password);
+        cy.checkIfVisible(USERNAME_VALUE);
         cy.log('Step 3: Click on user profile');
         cy.clickUserProfile(testData.username);
         cy.assertTextOfElement(USER_CARD, testData.username);
