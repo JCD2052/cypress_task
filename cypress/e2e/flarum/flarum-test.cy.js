@@ -1,4 +1,5 @@
 const {randomString} = require("../../fixtures/get-random-string");
+const {STATUS, USER_CARD, ITEM_BIO, HEADER_LOGO, ITEM_LOGIN} = require("../../support/locators");
 describe('test flarum web site', () => {
     let testData;
     before(() => {
@@ -8,18 +9,18 @@ describe('test flarum web site', () => {
     });
 
     it('enter, login and change bio', () => {
-        cy.logInfo('Step 1: Move to Flarum website');
+        cy.log('Step 1: Move to Flarum website');
         cy.visit('/');
         cy.checkIfVisible(HEADER_LOGO);
         cy.clickOnElement(ITEM_LOGIN);
-        cy.logInfo('Step 2: Login page is open');
+        cy.log('Step 2: Login page is open');
         cy.logInViaUI(testData.email, testData.password);
-        cy.logInfo('Step 3: Click on user profile');
+        cy.log('Step 3: Click on user profile');
         cy.clickUserProfile(testData.username);
         cy.assertTextOfElement(USER_CARD, testData.username);
-        cy.logInfo('Step 4: Check user status');
+        cy.log('Step 4: Check user status');
         cy.assertTextOfElement(STATUS, testData.status);
-        cy.logInfo('Step 5: Update user bio');
+        cy.log('Step 5: Update user bio');
         cy.clickOnElement(ITEM_BIO);
         cy.typeTextInTextArea(randomString);
         cy.checkIfBioAssert(randomString);
@@ -32,7 +33,7 @@ describe('test flarum web site', () => {
         cy.typeTextInTextArea(testData.newPhrase);
         cy.wait('@stubPostRequest');
         cy.checkIfBioAssert(testData.stubbedText);
-        cy.logInfo('Step 6: Reload page');
+        cy.log('Step 6: Reload page');
         cy.reload();
         cy.checkIfBioAssert(testData.newPhrase);
     });

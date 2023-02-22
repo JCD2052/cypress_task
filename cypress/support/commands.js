@@ -1,14 +1,5 @@
-const HEADER_LOGO = '.Header-logo';
-const ITEM_LOGIN = '.item-logIn';
-const USER_CARD = '.UserCard-identity';
-const STATUS = '.item-lastSeen';
-const ITEM_BIO = '.item-bio';
-const TEXT_AREA = 'textarea';
-const ITEM_PROFILE = '.item-profile';
-const USERNAME_VALUE = 'span.username';
-const USERNAME = '[placeholder="Username or Email"]';
-const PASSWORD = '[placeholder="Password"]';
-const LOGIN_SUBMIT = '[type="submit"]';
+import {ITEM_BIO, ITEM_PROFILE, LOGIN_SUBMIT, PASSWORD, TEXT_AREA, USERNAME, USERNAME_VALUE} from "./locators";
+
 
 Cypress.Commands.add('logInViaUI', (email, password) => {
     cy.get(USERNAME)
@@ -53,9 +44,9 @@ Cypress.Commands.add('checkIfBioAssert', (valueToMatch) => {
     cy.assertTextOfElement(ITEM_BIO, valueToMatch);
 });
 
-Cypress.Commands.add('logInfo', (message) => {
-    cy.task('log', message);
-});
+// Cypress.Commands.add('logInfo', (message) => {
+//     cy.task('log', message);
+// });
 
 
 
